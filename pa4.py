@@ -10,7 +10,7 @@ prompt = """Act as an english exam writer who want undergraduate student to deve
 2.You have to fact check and prove before using the information.
 3.The article should be 400-500 words , vocabulary should be B2-C1 following the CEFR level and grammar must correct and no error.
 4.The exam should be 10 questions with 4 multiple choice that complex and challenging that require deeper comprehension and interpretation.
-5.Then, you have to provide the answer key description with proper reasons for every questions in the table.
+5.Then, you have to provide the answer key and description with proper reasons for every questions.
 """
 
 st.title('Reading exam generator')
@@ -30,12 +30,3 @@ if st.button('Click'):
     st.markdown('**AI response:**')
     answer = response.choices[0].message.content
     st.write(answer)
-
-    st.markdown("### Answer Key (if provided):")
-    if "Answer Key" in answer:
-        key_start = answer.find("Answer Key:")
-        key_content = answer[key_start:]
-                
-        rows = [row.split('\t') for row in key_content.split('\n') if '\t' in row]
-        df = pd.DataFrame(rows, columns=["Question", "Correct Answer", "Explanation"])
-        st.dataframe(df)
