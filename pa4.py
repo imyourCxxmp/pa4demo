@@ -24,7 +24,7 @@ if st.button('Click'):
     ]
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=messages_so_far
+        messages=messages_so_far,
         temperature=1.1
     )
     st.markdown('**AI response:**')
