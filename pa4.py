@@ -25,9 +25,17 @@ if st.button('Click'):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages_so_far
+        temperature=1.1
     )
     st.markdown('**AI response:**')
     answer = response.choices[0].message.content
-    sd = json.loads(answer)
-    suggestion_df = pd.DataFrame.from_dict(sd)
-    st.table(suggestion_df)
+    st.write(answer)
+
+    st.markdown("### Answer Key (if provided):")
+    if "Answer Key" in answer:
+        key_start = answer.find("Answer Key:")
+        key_content = answer[key_start:]
+                
+        rows = [row.split('\t') for row in key_content.split('\n') if '\t' in row]
+        df = pd.DataFrame(rows, columns=["Question", "Correct Answer", "Explanation"])
+        st.dataframe(df)
