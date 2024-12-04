@@ -28,4 +28,4 @@ if st.button('Click'):
     )
     st.markdown('**AI response:**')
     answer = response.choices[0].message.content
-    print(answer)
+    st.write(answer)
