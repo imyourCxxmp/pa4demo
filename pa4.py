@@ -47,7 +47,17 @@ if st.button('Click'):
     answer = response.choices[0].message.content
     st.write(answer.split("answer_key = ")[0].strip())
 
-    answer_key = answer.split("answer_key = ")[1].strip()
-    st.write(answer_key)
+    answer_key = [
+    {'No.': 1, 'Answer': 'B', 'Explanation': "The article emphasizes that individuals make resolutions to reflect and set goals for self-improvement."},
+    {'No.': 2, 'Answer': 'C', 'Explanation': "It states that around 40-45% of Americans typically create New Year resolutions."},
+    {'No.': 3, 'Answer': 'C', 'Explanation': "Health and fitness goals are highlighted as the most common types of resolutions."},
+    {'No.': 4, 'Answer': 'C', 'Explanation': "The failure to maintain resolutions is attributed to poor planning and lack of motivation."},
+    {'No.': 5, 'Answer': 'C', 'Explanation': "Tracking progress through journaling or apps is suggested to help maintain resolutions."},
+    {'No.': 6, 'Answer': 'B', 'Explanation': "Friends and family are described as providing support and encouragement in adhering to resolutions."},
+    {'No.': 7, 'Answer': 'B', 'Explanation': "Critically analyzing reasons for past failures is suggested as valuable for setting future resolutions."},
+    {'No.': 8, 'Answer': 'D', 'Explanation': "The article points out that resolutions should be specific to be effective."},
+    {'No.': 9, 'Answer': 'B', 'Explanation': "The study indicates that most individuals abandon their resolutions by February."},
+    {'No.': 10, 'Answer': 'B', 'Explanation': "Self-reflection helps individuals identify what strategies were effective or ineffective in their past resolutions."}
+]
     answer_df = pd.DataFrame(answer_key)
     st.dataframe(answer_df)
