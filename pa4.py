@@ -20,10 +20,10 @@ D)\n
 title must be on 'Answer Key'. Also, the answer key should be in list of dictionaries. 
 It will be 2 column: Answer and Explanation as this structure:
 answer_key = [  
-    { 'Answer': '', 'Explanation': ""},
-    { 'Answer': '', 'Explanation': ""},
+    {'Answer': '', 'Explanation': ""},
+    {'Answer': '', 'Explanation': ""},
     ...........
-    { 'Answer': '', 'Explanation': ""},
+    {'Answer': '', 'Explanation': ""},
     ]
 Because I will use this data to st.dataframe.
 """
@@ -50,5 +50,8 @@ if st.button('Click'):
     pattern = r"\{'Answer'\s*:\s*'([A-D])',\s*'Explanation'\s*:\s*'(.*?)'\}"
     match = re.findall(pattern, answer_string)
     answer_key = [{'Answer': answer, 'Explanation': explanation} for answer, explanation in match]
+    st.write(answer_string)
+    st.write(match)
+    st.write(answer_key)
     answer_df = pd.DataFrame(answer_key)
     st.dataframe(answer_df)
