@@ -49,8 +49,6 @@ if st.button('Click'):
     pattern = r"\{'Answer':\s*'([A-D])',\s*'Explanation':\s*\"(.*?)\"\}"
     matches = re.findall(pattern, answer_string)
     answer_key = [{'Answer': answer, 'Explanation': explanation} for answer, explanation in matches]
-    st.write(answer_string)
-    st.write(matches)
-    st.write(answer_key)
     answer_df = pd.DataFrame(answer_key)
+    answer_df.index = ['1', '2', '3','4', '5', '6','7', '8', '9','10']
     st.dataframe(answer_df)
