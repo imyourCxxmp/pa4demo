@@ -17,9 +17,8 @@ B)\n
 C)\n 
 D)\n
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
-Don't use 'Justifications' because it's so weird. Also, the answer key should be in LIST OF DICT. 
-It will be 3 column: No. , Answer and Explanation 
-as this structure:
+title must be on 'Answer Key'. Also, the answer key should be in LIST OF DICT. 
+It will be 3 column: No. , Answer and Explanation as this structure:
 answer_key = [No. : 1, Answer : , Explanation : }......
 {no. : 10, Answer : , Explanation : }
 ]
@@ -44,6 +43,6 @@ if st.button('Click'):
     answer = response.choices[0].message.content
     st.write(answer)
 
-    answer_key = eval(answer.split("answer_key = ")[1].strip())
+    answer_key = answer.split("answer_key = ")[1].strip()
     answer_df = pd.DataFrame(answer_key)
     st.dataframe(answer_df)
