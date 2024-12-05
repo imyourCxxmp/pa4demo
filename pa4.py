@@ -38,18 +38,19 @@ if st.button('Click'):
     st.write(answer)
 
     st.markdown("### Answer Key (if provided):")
-if "Answer Key" in answer:
     
-    key_start = answer.find("Answer Key:")
-    key_content = answer[key_start + len("Answer Key:"):].strip()
+    if "Answer Key" in answer:
+    
+        key_start = answer.find("Answer Key:")
+        key_content = answer[key_start + len("Answer Key:"):].strip()
         
-    rows = []
-    for line in key_content.split('\n'):
-        if '\t' in line:
+        rows = []
+        for line in key_content.split('\n'):
+            if '\t' in line:
                 rows.append(line.split('\t'))
-        elif ',' in line:
+            elif ',' in line:
                 rows.append(line.split(','))
         
-        if len(rows) > 0 and len(rows[0]) >= 3:
-            df = pd.DataFrame(rows, columns=["Question", "Correct Answer", "Explanation"])
-            st.dataframe(df)
+            if len(rows) > 0 and len(rows[0]) >= 3:
+                df = pd.DataFrame(rows, columns=["Question", "Correct Answer", "Explanation"])
+                st.dataframe(df)
