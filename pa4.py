@@ -19,8 +19,7 @@ D)\n
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
 title must be on 'Answer Key'. Also, the answer key should be in list of dictionaries. 
 It will be 2 column: Answer and Explanation as this structure:
-answer_key = [  
-    {'Answer': '', 'Explanation': ""},
+answer_key = [ {'Answer': '', 'Explanation': ""},
     {'Answer': '', 'Explanation': ""},
     ...........
     {'Answer': '', 'Explanation': ""},
@@ -47,11 +46,11 @@ if st.button('Click'):
     st.write(answer.split("answer_key = ")[0].strip())
 
     answer_string = answer.split("answer_key = ")[1].strip()
-    pattern = r"\{'Answer'\s*:\s*'([A-D])',\s*'Explanation'\s*:\s*'(.*?)'\}"
-    match = re.findall(pattern, answer_string)
-    answer_key = [{'Answer': answer, 'Explanation': explanation} for answer, explanation in match]
+    pattern = r"\{'Answer':\s*'([A-D])',\s*'Explanation':\s*\"(.*?)\"\}"
+    matches = re.findall(pattern, answer_string)
+    answer_key = [{'Answer': answer, 'Explanation': explanation} for answer, explanation in matches]
     st.write(answer_string)
-    st.write(match)
+    st.write(matches)
     st.write(answer_key)
     answer_df = pd.DataFrame(answer_key)
     st.dataframe(answer_df)
