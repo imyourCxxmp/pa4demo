@@ -17,11 +17,15 @@ B)\n
 C)\n 
 D)\n
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
-title must be on 'Answer Key'. Also, the answer key should be in LIST OF DICT. 
+title must be on 'Answer Key'. Also, the answer key should be in list of dictionaries. 
 It will be 3 column: No. , Answer and Explanation as this structure:
-answer_key = [ {'No.' : '1' , 'Answer' : 'string' , 'Explanation' : "string" }\n......
-{'No.' : '10' , 'Answer' : 'string' , 'Explanation' : "string"}
-]
+answer_key = [  
+    {'No.': '1', 'Answer': '', 'Explanation': ""},
+    {'No.': '2', 'Answer': '', 'Explanation': ""},
+    {'No.': '3', 'Answer': '', 'Explanation': ""},
+    ...........
+    {'No.': '10', 'Answer': '', 'Explanation': ""},
+    ]
 Because I will use this data to st.dataframe.
 """
 
@@ -45,3 +49,5 @@ if st.button('Click'):
 
     answer_key = answer.split("answer_key = ")[1].strip()
     st.write(answer_key)
+    answer_df = pd.DataFrame(answer_key)
+    st.dataframe(answer_df)
