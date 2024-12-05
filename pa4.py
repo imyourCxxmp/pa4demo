@@ -19,8 +19,8 @@ D)\n
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
 title must be on 'Answer Key'. Also, the answer key should be in LIST OF DICT. 
 It will be 3 column: No. , Answer and Explanation as this structure:
-answer_key = [No. : 1, Answer : , Explanation : }......
-{no. : 10, Answer : , Explanation : }
+answer_key = [ {'No.' : '1' , 'Answer' : 'string' , 'Explanation' : "string" }......
+{'No.' : '10' , 'Answer' : 'string' , 'Explanation' : "string"}
 ]
 Because I will use this data to st.dataframe.
 """
@@ -41,7 +41,7 @@ if st.button('Click'):
     )
     st.markdown('**AI response:**')
     answer = response.choices[0].message.content
-    st.write(answer)
+    st.write(answer.split("answer_key = ")[0].strip())
 
     answer_key = answer.split("answer_key = ")[1].strip()
     answer_df = pd.DataFrame(answer_key)
