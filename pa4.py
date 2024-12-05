@@ -36,8 +36,4 @@ if st.button('Click'):
     )
     st.markdown('**AI response:**')
     answer = response.choices[0].message.content
-    answer_key_index = answer.index('answer.lower()')
-    st.write(answer[:answer_key_index])
-
-    st.markdown("### Answer Key (if provided):")
-    
+    st.write(answer)
