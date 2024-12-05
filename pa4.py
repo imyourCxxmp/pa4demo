@@ -17,8 +17,8 @@ B)\n
 C)\n 
 D)\n
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
-Don't use 'Justifications' because it's so weird. Also, the answer key should be in code that is ready to
-present it as dataframe. It will be 3 column: No, answer and explanation
+Don't use 'Justifications' because it's so weird. Also, the answer key should be in DICTIONARY because I will use
+this data to st.dataframe. It will be 3 column: No, answer and explanation.
 """
 
 st.title('Reading exam generator')
