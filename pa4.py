@@ -51,6 +51,6 @@ if st.button('Click'):
             elif ',' in line:
                 rows.append(line.split(','))
         
-            if len(rows) > 0 and len(rows[0]) >= 3:
-                df = pd.DataFrame(rows, columns=["Question", "Correct Answer", "Explanation"])
-                st.dataframe(df)
+        if len(rows) > 0 and len(rows[0]) >= 3:
+            df = pd.DataFrame(rows, columns=["Question", "Correct Answer", "Explanation"])
+            st.dataframe(df)
