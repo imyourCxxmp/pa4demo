@@ -12,11 +12,11 @@ prompt = """Act as an english exam writer who want undergraduate student to deve
 3.The article should be 300-400 words , vocabulary should be B2-C1 following the CEFR level and grammar must correct and no error.
 4.The exam should be 10 questions with 4 multiple choice that complex and challenging that require deeper comprehension and interpretation skills.
 question should be in this structure:
-Question
-A)
-B)
-C)
-D)
+Question\n
+A)\n
+B)\n
+C)\n
+D)\n
 Thus, Question and choice shouldn't place in the same line.
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
 title must be on 'Answer Key'. Also, the answer key should be in list of dictionaries. 
@@ -50,8 +50,3 @@ if st.button('Click'):
     answer_df = pd.DataFrame(answer_key)
     answer_df.index = ['1', '2', '3','4', '5', '6','7', '8', '9','10']
     st.dataframe(answer_df)
-    
-    sentiment_mapping = [":material/thumb_down:", ":material/thumb_up:"]
-    selected = st.feedback("thumbs")
-    if selected is not None:
-        st.markdown(f"You selected: {sentiment_mapping[selected]}")
