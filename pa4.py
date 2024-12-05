@@ -11,16 +11,15 @@ prompt = """Act as an english exam writer who want undergraduate student to deve
 2.You have to fact check and prove with 2-3 sources before using the information.
 3.The article should be 300-500 words , vocabulary should be B2-C1 following the CEFR level and grammar must correct and no error.
 4.The article must contains linking words, 2 or more type of conjunction and provide additional contents which relate to the topic if avaliable.
-5.You must provide all link lead to references you took information form at the end of the article every time to respect the author.
-6.The exam should be 10 questions with 4 multiple choice that very difficult, complex and challenging that require deeper comprehension and interpretation skills.
+5.The exam should be 10 questions with 4 multiple choice that very difficult, complex and challenging that require deeper comprehension and interpretation skills.
 question should be in this structure:
 Question\n
 A)\n
 B)\n
 C)\n
 D)\n
-Thus, Question and Choice Shouldn't Place In The Same Line.
-7.Then, you have to provide the answer key and description with proper reasons for every questions. 
+Thus, Question and every Choice Shouldn't Place In The Same Line.
+6.Then, you have to provide the answer key and description with proper reasons for every questions. 
 title must be on 'Answer Key'. Also, the answer key should be in list of dictionaries. 
 It will be 2 column: Answer and Explanation as this structure:
 answer_key = [ {'Answer': '', 'Explanation': ""},
@@ -44,6 +43,7 @@ if st.button('Click'):
         temperature=1.2
     )
     answer = response.choices[0].message.content
+    st.markdown('Reminder: ChatGPT can make mistakes. Please consider the result when using this.')
     st.write(answer.split("answer_key = ")[0].strip())
     answer_string = answer.split("answer_key = ")[1].strip()
     pattern = r"\{'Answer':\s*'([A-D])',\s*'Explanation':\s*\"(.*?)\"\}"
