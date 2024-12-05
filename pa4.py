@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import json
+import re
 import openai
 
 user_api_key = st.sidebar.text_input("OpenAI API key")
@@ -18,13 +18,12 @@ C)\n
 D)\n
 5.Then, you have to provide the answer key and description with proper reasons for every questions. 
 title must be on 'Answer Key'. Also, the answer key should be in list of dictionaries. 
-It will be 3 column: No. , Answer and Explanation as this structure:
+It will be 2 column: Answer and Explanation as this structure:
 answer_key = [  
-    {'No.': '1', 'Answer': '', 'Explanation': ""},
-    {'No.': '2', 'Answer': '', 'Explanation': ""},
-    {'No.': '3', 'Answer': '', 'Explanation': ""},
+    { 'Answer': '', 'Explanation': ""},
+    { 'Answer': '', 'Explanation': ""},
     ...........
-    {'No.': '10', 'Answer': '', 'Explanation': ""},
+    { 'Answer': '', 'Explanation': ""},
     ]
 Because I will use this data to st.dataframe.
 """
@@ -47,17 +46,9 @@ if st.button('Click'):
     answer = response.choices[0].message.content
     st.write(answer.split("answer_key = ")[0].strip())
 
-    answer_key = [
-    {'No.': 1, 'Answer': 'B', 'Explanation': "The article emphasizes that individuals make resolutions to reflect and set goals for self-improvement."},
-    {'No.': 2, 'Answer': 'C', 'Explanation': "It states that around 40-45% of Americans typically create New Year resolutions."},
-    {'No.': 3, 'Answer': 'C', 'Explanation': "Health and fitness goals are highlighted as the most common types of resolutions."},
-    {'No.': 4, 'Answer': 'C', 'Explanation': "The failure to maintain resolutions is attributed to poor planning and lack of motivation."},
-    {'No.': 5, 'Answer': 'C', 'Explanation': "Tracking progress through journaling or apps is suggested to help maintain resolutions."},
-    {'No.': 6, 'Answer': 'B', 'Explanation': "Friends and family are described as providing support and encouragement in adhering to resolutions."},
-    {'No.': 7, 'Answer': 'B', 'Explanation': "Critically analyzing reasons for past failures is suggested as valuable for setting future resolutions."},
-    {'No.': 8, 'Answer': 'D', 'Explanation': "The article points out that resolutions should be specific to be effective."},
-    {'No.': 9, 'Answer': 'B', 'Explanation': "The study indicates that most individuals abandon their resolutions by February."},
-    {'No.': 10, 'Answer': 'B', 'Explanation': "Self-reflection helps individuals identify what strategies were effective or ineffective in their past resolutions."}
-]
+    answer_string = answer.split("answer_key = ")[1].strip()
+    pattern = r"\{'Answer'\s*:\s*'([A-D])',\s*'Explanation'\s*:\s*'(.*?)'\}"
+    match = re.findall(pattern, answer_string)
+    answer_key = [{'Answer': answer, 'Explanation': explanation} for answer, explanation in match]
     answer_df = pd.DataFrame(answer_key)
     st.dataframe(answer_df)
