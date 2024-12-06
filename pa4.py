@@ -28,7 +28,7 @@ answer_key = [ {'Answer': '', 'Explanation': ""},
 Because I will use this data for st.dataframe.
 """
 
-st.title('Reading Exam Generator✏📚')
+st.title('Reading Exam Generator📚')
 st.markdown('Hello, I will generate reading exam from your keyword texted in input. The article will be about 300-400 words, difficulty is B2-C1 level following CEFR and questions will be 10.')
 user_input = st.text_input('text your keyword here', 'ex. Wicked')
 
@@ -43,7 +43,7 @@ if st.button('Click!'):
         temperature=1.2
     )
     answer = response.choices[0].message.content
-    st.markdown('*Reminder: ChatGPT can make mistakes. Please consider the result when using this.*')
+    st.markdown('Reminder: ChatGPT can make mistakes. Please consider the result when using this.')
     st.write(answer.split("answer_key = ")[0].strip())
     answer_string = answer.split("answer_key = ")[1].strip()
     pattern = r"\{'Answer':\s*'([A-D])',\s*'Explanation':\s*\"(.*?)\"\}"
