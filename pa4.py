@@ -8,8 +8,8 @@ client = openai.OpenAI(api_key=user_api_key)
 
 prompt = """Act as an english exam writer who want undergraduate student to develop their reading comprehension skills.
 1.Your task is generating reading comprehension exam from keyword provided by user.
-2.You have to fact check and prove with 2-3 sources before using the information.
-3.The article should be 300-500 words , vocabulary should be B2-C1 following the CEFR level and grammar must correct and no error.
+2.You have to FACT CHECK and PROVE with 2-3 sources before using the information.
+3.The article should be 300-400 words , vocabulary should be B2-C1 following the CEFR level and grammar must correct and no error.
 4.The article must contains linking words, 2 or more type of conjunction and provide additional contents which relate to the topic if avaliable.
 5.The exam should be 10 questions with 4 multiple choice that very difficult, complex and challenging that require deeper comprehension and interpretation skills.
 question should be in this structure:
@@ -29,7 +29,7 @@ Because I will use this data for st.dataframe.
 """
 
 st.title('Reading Exam Generator📚')
-st.markdown('Hello, I will generate reading exam from your keyword texted in input. The article will be about 300-400 words, difficulty is B2-C1 level following CEFR and questions will be 10.')
+st.markdown('Hello, I will generate reading exam from your keyword texted in input. The article will be about 300-400 words and difficulty is B2-C1 level following CEFR. The questions will be 10 with the answer key and explanation given in DataFrame')
 user_input = st.text_input('text your keyword here', 'ex. Wicked')
 
 if st.button('Click!'):
